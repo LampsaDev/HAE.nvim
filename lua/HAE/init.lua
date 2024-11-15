@@ -70,7 +70,7 @@ function M.search_ai()
 end
 
 function M.search_error(ai)
-	cal filetype = vim.bo.filetype
+	local filetype = vim.bo.filetype
 	if filetype then
 		filetype = " in " .. filetype
 	end
