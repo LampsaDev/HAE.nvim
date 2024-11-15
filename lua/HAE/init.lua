@@ -6,6 +6,11 @@ end
 
 Selected = nil
 
+function M.setup()
+    print("HAE.nvim loaded successfully!")
+    -- Add your setup logic here, e.g., keymaps, commands, etc.
+end
+
 function M.get_visual_selection()
 	local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
 	local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
@@ -70,7 +75,7 @@ function M.search_ai()
 end
 
 function M.search_error(ai)
-	local filetype = vim.bo.filetype
+	cal filetype = vim.bo.filetype
 	if filetype then
 		filetype = " in " .. filetype
 	end
