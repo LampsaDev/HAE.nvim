@@ -6,11 +6,6 @@ end
 
 Selected = nil
 
-function M.setup()
-    print("HAE.nvim loaded successfully!")
-    -- Add your setup logic here, e.g., keymaps, commands, etc.
-end
-
 function M.get_visual_selection()
 	local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
 	local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
