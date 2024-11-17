@@ -1,9 +1,5 @@
 local M = {}
 
-function M.hello()
-	print("Hello from mygoogle plugin!")
-end
-
 Selected = nil
 
 function M.get_visual_selection()
