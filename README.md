@@ -8,10 +8,10 @@
 
 ## Install using lazy
 
-return {
-  "LampsaDev/HAE.nvim",
-  lazy = false,
-  config = function()
-    require("HAE")
-  end,
+return { <br>
+    "LampsaDev/HAE.nvim", <br>
+    lazy = false, <br>
+    config = function() <br>
+        require("HAE") <br>
+    end,<br>
 }
