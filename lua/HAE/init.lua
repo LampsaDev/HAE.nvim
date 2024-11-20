@@ -20,20 +20,21 @@ end
 
 function M.get_command()
 	local line = vim.api.nvim_get_current_line()
-
 	-- Check if "/x" exists in the line
 	if not string.find(line, "/x") then
 		print("Wait for modifier like 's', 'e', or any valid modifier")
 		return
 	end
-
 	-- Split the line by "/x" using vim.split
 	local parts = vim.split(line, "/x", { trimempty = true })
-
 	-- Extract "old" (word before the first "/x")
 	local command = {}
-	command.old = parts[1]:match("%S+") or ""
-
+	-- Handle "before" logic
+	if parts[1]:match("%s$") then
+		command.before = "" -- Trailing space means no 'before'
+	else
+		command.before = parts[1]:match("%S+$") or "" -- Take the last word from parts[1]
+	end
 	-- Handle "modifier" and "content"
 	if parts[2] then
 		local modifier_content = vim.split(parts[2], "%s+", { trimempty = true })
@@ -172,8 +173,18 @@ vim.keymap.set("v", "<leader>SA", ":HaeAI<CR>", { noremap = true, silent = true 
 --Replace function
 function M.replace()
 	local xcommand = M.get_command()
-	local old_text = nil
-	local new_text = nil
+	if not xcommand then
+		print("No command on the line")
+		return
+	elseif not xcommand.before then
+		print("No word right before '/x' !")
+		return
+	elseif xcommand.content then
+		print("No word after '/x' !")
+		return
+	end
+	local old_text = xcommand.before
+	local new_text = xcommand.content
 	local command = string.format("%%s/%o/%n", old_text, new_text)
 	vim.cmd(command)
 end
@@ -182,6 +193,6 @@ vim.api.nvim_create_user_command("HaeReplace", function()
 	M.replace()
 end, { range = true })
 
-vim.keymap.set("i", "<C-x>", ":HaeReplace<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-a>", ":HaeReplace<CR>", { noremap = true, silent = true })
 
 return M
