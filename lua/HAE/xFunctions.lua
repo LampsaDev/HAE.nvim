@@ -47,14 +47,29 @@ function M.replace()
 		print("Invalid command format for replacing.")
 		return
 	end
-	local old_text = xcommand.before
-	local new_text = xcommand.content
-	local command = string.format("s/%s/x/%s", old_text, new_text)
+
+	-- Escape `/` in old_text and new_text
+	local old_text = xcommand.before:gsub("/", "\\/") .. "\\/x"
+	local new_text = xcommand.content:gsub("/", "\\/")
+	local command
+
+	-- Default command: Replace the first match
+	command = string.format("s/%s/%s/", old_text, new_text)
+
+	-- Handle modifiers
 	if xcommand.modifier == "a" or xcommand.modifier == "A" then
-		command = string.format("%%s/%s/%s", old_text, new_text)
+		-- Replace globally with confirmation
+		command = string.format("%%s/%s/%s/gc", old_text, new_text)
+	elseif xcommand.modifier == "af" or xcommand.modifier == "AF" then
+		-- Replace globally without confirmation
+		command = string.format("%%s/%s/%s/g", old_text, new_text)
 	end
 
+	-- Execute the replacement command
 	vim.cmd(command)
+
+	-- Cleanup: Remove the entire command, including everything after `/x` until another `/x` or the end of the line
+	vim.cmd(string.format("s/%s\\/x[^\\/]*\\/x//g", old_text))
 end
 
 return M

@@ -30,7 +30,6 @@ end, { range = true })
 vim.api.nvim_create_user_command("HaeAI", function()
 	haeFunctions.search_ai()
 end, { range = true })
-
 -- User command for /x replacement
 vim.api.nvim_create_user_command("HaeReplace", function()
 	xFunctions.replace()
