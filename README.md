@@ -16,7 +16,7 @@ Checks whats under the cursor and uses it as search
 
 ```lua
 return {
-  "LampsaDev/HAE.nvim"
+  "LampsaDev/HAE.nvim",
   lazy = false,
   config = function()
     require("HAE")
