@@ -50,7 +50,7 @@ function M.replace()
 
 	-- Escape `/` in old_text and new_text
 	local old_text = xcommand.before:gsub("/", "\\/") .. "\\/x" .. xcommand.modifier
-	local new_text = xcommand.content:gsub("/", "\\/")
+	local new_text = xcommand.content:gsub("/", "\\/") .. "\\/x"
 	local command
 
 	-- Default command: Replace the first match
@@ -65,10 +65,8 @@ function M.replace()
 	-- Execute the replacement command
 	vim.cmd(command)
 
-	-- Cleanup: Remove the entire command, including everything after `/x` until another `/x` or the end of the line
-	vim.cmd(string.format("s/%s//g", old_text))
-	vim.cmd(string.format("s/%s//g", new_text))
-	vim.cmd("s/\\/x//g")
+	-- Cleanup: Remove everything between `/x` markers
+	vim.cmd("s/\\/x[^\\/]*\\/x//g")
 end
 
 return M
