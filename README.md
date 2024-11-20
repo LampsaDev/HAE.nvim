@@ -1,5 +1,9 @@
 # Super Upee Web Hae
 
+## Not working at the moment and Will likely be splitted into 2 separate plugins
+-> One for searches
+-> One for /x functions
+
 ## _A simple Neovim plugin for searching the web and replacing text using /x commands. Includes functionality for:_
 
 - Google and AI-based searches.
@@ -61,17 +65,21 @@ return {
 
 ### _Format:_
 
-- \<text-before\> /x\<modifier\> \<replacement-text\>
+- \<text-before\>/x\<modifier\> \<replacement-text\>
 
 ## _Examples:_
 
 ### _Replace old_text with new_text:_
 
-- old_text /xs new_text
+- old_text/x new_text
 
-### _Append text to an existing string:_
+### _Append text to an existing string for all instances in file:_
 
-- original /xa appended_text
+- original/xa appended_text
+
+### _Replace text for all instances of original text in file:_
+
+- original/xx appended_text
 
 ## _Features_
 
@@ -93,12 +101,12 @@ return {
 
 ## _Todo_
 
-- Add /x functionality for text replacement.
-- Extend /x for inline searches and error marking.
-- Enable searches from Insert mode using \<C-x\>.
-  - Use /x to define search areas with modifiers like 's', 'e', 'a'.
-  - If no markers are set, treat the whole line as the command.
-- Easy text replacement via /x:
-- textToReplace/x newText
-- Enable saving commands with TODO-like syntax.
-- Delete /x commands automatically after execution.
+[] Add /x functionality for text replacement.
+[] Extend /x for inline searches and error marking.
+[] Enable searches from Insert mode using \<C-x\>.
+  [] Use /x to define search areas with modifiers like 's', 'e', 'a'.
+  [] If no markers are set, treat the whole line as the command.
+[] Easy text replacement via /x:
+[] textToReplace/x newText
+[] Enable saving commands with TODO-like syntax.
+[] Delete /x commands automatically after execution.
