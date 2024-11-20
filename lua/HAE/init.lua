@@ -1,5 +1,5 @@
-local xFunctions = require("xFunctions")
-local haeFunctions = require("haeFunctions")
+local xFunctions = require("HAE/xFunctionsxFunctions")
+local haeFunctions = require("HAE/haeFunctions")
 
 -- Keymaps for Hae functionality
 vim.keymap.set("n", "<leader>SE", ":HaeErrorAI<CR>", { noremap = true, silent = true })
