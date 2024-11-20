@@ -182,6 +182,6 @@ vim.api.nvim_create_user_command("HaeReplace", function()
 	M.replace()
 end, { range = true })
 
-vim.keymap.set("i", "<C-x>", ":<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-x>", ":HaeReplace<CR>", { noremap = true, silent = true })
 
 return M
