@@ -1,4 +1,4 @@
-local xFunctions = require("HAE/xFunctionsxFunctions")
+local xFunctions = require("HAE/xFunctions")
 local haeFunctions = require("HAE/haeFunctions")
 
 -- Keymaps for Hae functionality
