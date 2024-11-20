@@ -44,12 +44,16 @@ end
 function M.replace()
 	local xcommand = M.get_command()
 	if not xcommand or not xcommand.before or not xcommand.content then
-		print("Invalid command format.")
+		print("Invalid command format for replacing.")
 		return
 	end
 	local old_text = xcommand.before
 	local new_text = xcommand.content
-	local command = string.format("%%s/%s/%s/g", old_text, new_text)
+	local command = string.format("s/%s/x/%s", old_text, new_text)
+	if xcommand.modifier == "a" or xcommand.modifier == "A" then
+		command = string.format("%%s/%s/%s", old_text, new_text)
+	end
+
 	vim.cmd(command)
 end
 
