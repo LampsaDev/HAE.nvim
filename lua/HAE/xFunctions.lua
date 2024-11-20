@@ -64,9 +64,8 @@ function M.replace()
 
 	-- Execute the replacement command
 	vim.cmd(command)
-
 	-- Cleanup: Remove everything between `/x` markers
-	vim.cmd("s/\\/x[^\\/]*\\/x//g")
+	vim.cmd("s/\\/x[^\\/]*\\(\\/x\\|$\\)//g")
 end
 
 return M
