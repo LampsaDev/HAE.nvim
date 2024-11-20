@@ -49,7 +49,7 @@ function M.replace()
 	end
 
 	-- Escape `/` in old_text and new_text
-	local old_text = xcommand.before:gsub("/", "\\/") .. "\\/x"
+	local old_text = xcommand.before:gsub("/", "\\/") .. "\\/x" .. xcommand.modifier
 	local new_text = xcommand.content:gsub("/", "\\/")
 	local command
 
@@ -59,17 +59,16 @@ function M.replace()
 	-- Handle modifiers
 	if xcommand.modifier == "a" or xcommand.modifier == "A" then
 		-- Replace globally with confirmation
-		command = string.format("%%s/%s/%s/gc", old_text, new_text)
-	elseif xcommand.modifier == "af" or xcommand.modifier == "AF" then
-		-- Replace globally without confirmation
-		command = string.format("%%s/%s/%s/g", old_text, new_text)
+		command = string.format("%%s/%s/%s", old_text, new_text)
 	end
 
 	-- Execute the replacement command
 	vim.cmd(command)
 
 	-- Cleanup: Remove the entire command, including everything after `/x` until another `/x` or the end of the line
-	vim.cmd(string.format("s/%s\\/x[^\\/]*\\/x//g", old_text))
+	vim.cmd(string.format("s/%s//g", old_text))
+	vim.cmd(string.format("s/%s//g", new_text))
+	vim.cmd("s/\\/x//g")
 end
 
 return M
