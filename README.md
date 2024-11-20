@@ -101,12 +101,12 @@ return {
 
 ## _Todo_
 
-- [ ] Add /x functionality for text replacement.
+- [x] Add /x functionality for text replacement.
 - [ ] Extend /x for inline searches and error marking.
 - [ ] Enable searches from Insert mode using \<C-x\>.
   - [ ] Use /x to define search areas with modifiers like 's', 'e', 'a'.
   - [ ] If no markers are set, treat the whole line as the command.
-- [ ] Easy text replacement via /x:
-- [ ] textToReplace/x newText
+- [x] Easy text replacement via /x:
+- [x] textToReplace/x newText
 - [ ] Enable saving commands with TODO-like syntax.
-- [ ] Delete /x commands automatically after execution.
+- [x] Delete /x commands automatically after execution.
