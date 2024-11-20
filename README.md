@@ -18,8 +18,8 @@ Checks whats under the cursor and uses it as search
 return {
   "LampsaDev/HAE.nvim"
   lazy = false,
-  config = function(
-  require("HAE"
+  config = function()
+    require("HAE")
   end,
 }
 ```
