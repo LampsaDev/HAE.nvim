@@ -59,13 +59,14 @@ function M.replace()
 	-- Handle modifiers
 	if xcommand.modifier == "a" or xcommand.modifier == "A" then
 		-- Replace globally with confirmation
-		command = string.format("%%s/%s/%s", old_text, new_text)
+		command = string.format("%%s/%s/%s/g", old_text, new_text)
 	end
 
 	-- Execute the replacement command
 	vim.cmd(command)
 	-- Cleanup: Remove everything between `/x` markers
 	vim.cmd("s/\\/x[^\\/]*\\(\\/x\\|$\\)//g")
+	vim.cmd("nohlsearch")
 end
 
 return M

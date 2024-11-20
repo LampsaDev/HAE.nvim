@@ -43,19 +43,19 @@ return {
 
 ## _Default Key Mappings_
 
-### _Web Searches:_
+### _Web Searches mappings:_
 
-- <leader>SS: Search from Google.
-- <leader>SA: Search from You.com AI.
+- \<leader\>SS: Search from Google.
+- \<leader\>SA: Search from You.com AI.
 
-### _Diagnostics:_
+### _Diagnostics mappings:_
 
-- <leader>Se: Search current error from Google.
-- <leader>SE: Search current error from You.com AI.
+- \<leader\>Se: Search current error from Google.
+- \<leader\>SE: Search current error from You.com AI.
 
-### _Text Replacement:_
+### _Text Replacement mappings:_
 
-- <C-x> (in Insert mode): Run /x replacement functionality directly.
+- \<C-x\> (in Insert mode): Run /x replacement functionality directly.
 
 ## _/x Syntax_
 
