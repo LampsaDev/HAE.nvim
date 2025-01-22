@@ -1,4 +1,4 @@
-# **Super Upee Web Hae**
+# **Hae aka Quick web search provider**
 
 Simple Neovim plugin for searching the web.
 Checks whats under the cursor and uses it as search
