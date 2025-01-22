@@ -98,29 +98,29 @@ function M.search(search_start, query, search_end)
 	return query
 end
 
-vim.api.nvim_create_user_command("HaeAI", function()
+vim.api.nvim_create_user_command("SearcherAI", function()
 	M.search_ai()
 end, { range = true })
 
-vim.api.nvim_create_user_command("HaeGoogle", function()
+vim.api.nvim_create_user_command("SearcherGoogle", function()
 	M.search_google()
 end, { range = true })
 
-vim.api.nvim_create_user_command("HaeError", function()
+vim.api.nvim_create_user_command("SearcherError", function()
 	M.search_error(false)
 end, { range = true })
 
-vim.api.nvim_create_user_command("HaeErrorAI", function()
+vim.api.nvim_create_user_command("SearcherErrorAI", function()
 	M.search_error(true)
 end, { range = true })
 
-vim.keymap.set("n", "<leader>SE", ":HaeErrorAI<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>Se", ":HaeError<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>SE", ":SearcherErrorAI<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>Se", ":SearcherError<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>SS", ":HaeGoogle<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<leader>SS", ":HaeGoogle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>SS", ":SearcherGoogle<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>SS", ":SearcherGoogle<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>SA", ":HaeAI<CR>", { noremap = true, silent = true })
-vim.keymap.set("v", "<leader>SA", ":HaeAI<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>SA", ":SearcherAI<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>SA", ":SearcherAI<CR>", { noremap = true, silent = true })
 
 return M
