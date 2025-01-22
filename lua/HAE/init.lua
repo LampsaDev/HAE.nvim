@@ -60,7 +60,7 @@ function M.search_ai()
 	else
 		query = M.get_visual_selection()
 	end
-	M.search("https://you.com/search?q=", query, "&fromSearchBar=true&tbm=youchat")
+	M.search("https://chatgpt.com/?q=", query, "")
 	print("Opening ai search for: " .. query)
 	Selected = nil
 end
